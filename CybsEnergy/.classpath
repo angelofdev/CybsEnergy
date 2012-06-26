@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/WorldGuard.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/WorldEdit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/Vault.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/SpoutPluginAPI.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/mcMMO.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/Craftbukkit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/Citizens.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Seppe/eclipse/lib/BukkitAPI.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
