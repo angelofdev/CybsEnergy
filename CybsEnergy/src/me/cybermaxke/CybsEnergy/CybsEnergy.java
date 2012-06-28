@@ -81,7 +81,6 @@ public class CybsEnergy extends JavaPlugin
 		fm.addToPreLoginCache(this, energyBaseUrl + "20.png");
 		fm.addToPreLoginCache(this, iconBaseUrl + "Sprint.png");
 		fm.addToPreLoginCache(this, iconBaseUrl + "Jump.png");
-		fm.addToPreLoginCache(this, iconBaseUrl + "Swimming.png");
 	}
 	
 	public void startEnergyLoop() {
@@ -89,14 +88,11 @@ public class CybsEnergy extends JavaPlugin
 	    {
 	    	public void run() {
 	    		for (Player players : Bukkit.getOnlinePlayers())
-	    			if (getEnergyManager().getEnergy(players) < 20) {
-	    				//if (players.getGameMode() == GameMode.CREATIVE) return;	
+	    			if (getEnergyManager().getEnergy(players) < 20) {	
 	    				if (players.getGameMode() == GameMode.SURVIVAL) {
 	    					if (PlayerListener.isSprinting(players)) return;
 	    					else if (PlayerListener.isJumpCharged(players)) return;
-	    					//else if (PlayerListener.isSwimming(players)) return;
 	    					getEnergyManager().setEnergy(players, getEnergyManager().getEnergy(players) + 1);
-	    					//PlayerGui.updateEnergyBar((SpoutPlayer) players);
 	    					CybsEnergy.getScreenManager().getPlayerGui((SpoutPlayer) players).updateEnergyBar((SpoutPlayer) players);
 	    				}
 	    			}
@@ -114,7 +110,6 @@ public class CybsEnergy extends JavaPlugin
 	    				if (players.getGameMode() == GameMode.SURVIVAL) {    				
 	    					if (PlayerListener.isSprinting(players)) {
 	    						getEnergyManager().setEnergy(players, getEnergyManager().getEnergy(players) - 1);
-	    						//PlayerGui.updateEnergyBar((SpoutPlayer)players);
 	    						CybsEnergy.getScreenManager().getPlayerGui((SpoutPlayer) players).updateEnergyBar((SpoutPlayer) players);
 	    					}
 	    				}
