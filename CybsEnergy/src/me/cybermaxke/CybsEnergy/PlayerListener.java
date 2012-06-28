@@ -50,6 +50,7 @@ public class PlayerListener implements Listener
     	else isJumpCharged.remove(player.getName());
     }
     
+    /*
     @EventHandler(priority=EventPriority.HIGH)
 	public void onPlayerInteract(PlayerInteractEvent event) {
     	SpoutPlayer player = (SpoutPlayer) event.getPlayer();
@@ -67,11 +68,11 @@ public class PlayerListener implements Listener
     		player.sendMessage("Is Jump Charged: " + msg3);
     	}
     }
+    */
     
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerJoin(PlayerJoinEvent event) {
     	SpoutPlayer player = (SpoutPlayer) event.getPlayer();
-    	//PlayerGui.initializePlayerGui(player);
     	CybsEnergy.getScreenManager().setPlayerGui(player, new PlayerGui(p, player));
     	if (player.getGameMode() == GameMode.CREATIVE) {
     		CybsEnergy.getScreenManager().getPlayerGui(player).showEnergyBar(player, false);
@@ -89,8 +90,6 @@ public class PlayerListener implements Listener
     	SpoutPlayer player = (SpoutPlayer) event.getPlayer();
     	if (event.getNewGameMode() == GameMode.CREATIVE) {
     		CybsEnergy.getScreenManager().getPlayerGui(player);
-			//PlayerGui.showEnergyBar(player, false);
-    		//PlayerGui.updateEnergyBar(player);
     		CybsEnergy.getScreenManager().getPlayerGui(player).showEnergyBar(player, false);
     		CybsEnergy.getEnergyManager().setEnergy(player, 20);
     	} else {
@@ -102,7 +101,6 @@ public class PlayerListener implements Listener
     public void onPlayerBedLeave(PlayerBedLeaveEvent event) {
     	SpoutPlayer player = (SpoutPlayer) event.getPlayer();
     	CybsEnergy.getEnergyManager().setEnergy(player, 20);
-    	//PlayerGui.updateEnergyBar(player);
     	CybsEnergy.getScreenManager().getPlayerGui(player).updateEnergyBar(player);
     }
     
@@ -132,8 +130,6 @@ public class PlayerListener implements Listener
     		if (CybsEnergy.getEnergyManager().getEnergy(player) >= 4) {
     			player.setWalkingMultiplier(1.7);
     			setSprinting(player, true);
-    			//PlayerGui.showSprintIcon(player, true);
-    			//PlayerGui.showJumpIcon(player, false);
     			CybsEnergy.getScreenManager().getPlayerGui(player).showSprintIcon(player, true);
     			CybsEnergy.getScreenManager().getPlayerGui(player).showJumpIcon(player, false);
     			return;
@@ -141,7 +137,6 @@ public class PlayerListener implements Listener
     	}
     	setSprinting(player, false);
     	player.setWalkingMultiplier(1.0);
-    	//PlayerGui.showSprintIcon(player, false);
     	CybsEnergy.getScreenManager().getPlayerGui(player).showSprintIcon(player, false);
     }
     
@@ -151,8 +146,6 @@ public class PlayerListener implements Listener
     	SpoutPlayer player = (SpoutPlayer) pl;
     	if (!(player.isSneaking())) {
     		setJumpCharged(pl, true);
-    		//PlayerGui.showJumpIcon(player, true);
-    		//PlayerGui.showSprintIcon(player, false);
     		CybsEnergy.getScreenManager().getPlayerGui(player).showJumpIcon(player, true);
     		CybsEnergy.getScreenManager().getPlayerGui(player).showSprintIcon(player, false);
     		if(CybsEnergy.getEnergyManager().getEnergy(player) >= 3) {
@@ -161,7 +154,6 @@ public class PlayerListener implements Listener
     	} else {
     		setJumpCharged(player, false);
     		player.setJumpingMultiplier(1.0);
-    		//PlayerGui.showJumpIcon(player, false);
     		CybsEnergy.getScreenManager().getPlayerGui(player).showJumpIcon(player, false);
     	}	
     }
@@ -174,7 +166,6 @@ public class PlayerListener implements Listener
     		if (isJumpCharged(player) && CybsEnergy.getEnergyManager().getEnergy(player) >= 3) {
     			setJumpCharged(player, false);
     			CybsEnergy.getEnergyManager().setEnergy(player, CybsEnergy.getEnergyManager().getEnergy(player) - 3);
-    			//PlayerGui.updateEnergyBar((SpoutPlayer) player);
     			CybsEnergy.getScreenManager().getPlayerGui(player).updateEnergyBar(player);
     		}
     	}
