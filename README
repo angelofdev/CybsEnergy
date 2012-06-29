@@ -1,2 +1,2 @@
--> PROBLEM <-
-I made a Energy Bar on player gui, but its linked to last player who joined.
+This adds Energy to the game with a Energy Bar,
+it is used to sprint, and jump higher.
