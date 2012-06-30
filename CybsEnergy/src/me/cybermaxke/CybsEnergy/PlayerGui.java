@@ -21,9 +21,14 @@ public class PlayerGui extends GenericContainer
 	public PlayerGui(CybsEnergy plugin, SpoutPlayer player) {
         	p = plugin;
         	energyBar = new GenericTexture();
+        	if (p.playerGuiLeft) {
+			energyBar.setX(120);
+		} else {
+			energyBar.setX(220);
+			baseUrl = baseUrl2 + "Right/EnergyBar_";
+		}
 		energyBar.setUrl(baseUrl + CybsEnergy.getEnergyManager().getEnergy(player) + ".png");
-		energyBar.setX(120).setY(190);
-		energyBar.setHeight(11).setWidth(87);
+		energyBar.setHeight(11).setWidth(87).setY(190);
 		energyBar.setPriority(RenderPriority.Lowest);
 		iconJump = new GenericTexture();
 		iconJump.setUrl(baseUrl2 + "Jump.png");
