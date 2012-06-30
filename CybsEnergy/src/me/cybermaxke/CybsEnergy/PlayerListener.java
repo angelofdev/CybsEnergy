@@ -156,10 +156,10 @@ public class PlayerListener implements Listener
     				CybsEnergy.getEnergyManager().setEnergy(player, CybsEnergy.getEnergyManager().getEnergy(player) - 3);
     				CybsEnergy.getScreenManager().getPlayerGui(player).updateEnergyBar(player);
     			} else {
-    			if (fallDistance > 0) {
-    				player.setFallDistance(fallDistance);
+    				if (fallDistance > 0) {
+    					player.setFallDistance(fallDistance);
+    				}
     			}
-    		}
     		}
     	}		
 }
