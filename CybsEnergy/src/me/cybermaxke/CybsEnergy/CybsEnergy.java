@@ -22,6 +22,12 @@ public class CybsEnergy extends JavaPlugin
 	private static String pTitle = "[CybsEnergy] ";
 	private static EnergyManager energyManager;
 	private static ScreenManager screenManager;
+	
+	public double fasterSprintMultiplier;
+	public double higherJumpMultiplier;
+	public int higherJumpEnergyReq;
+	public long ticksRegain;
+	public boolean playerGuiLeft;
 
 	public static EnergyManager getEnergyManager()
 	{
@@ -40,6 +46,8 @@ public class CybsEnergy extends JavaPlugin
 			log.warning(pTitle + "Can't find Spout, plugin disabled!");
 			return;
 		}
+		setupConfig();
+		loadConfig();
 		preCacheEnergyBarTex();
 		pm.registerEvents(playerListener, this);
 		energyManager = new EnergyManager(this);
@@ -52,6 +60,26 @@ public class CybsEnergy extends JavaPlugin
 	public void onDisable() 
 	{
 		log.info(pTitle + "is disabled.");
+	}
+	
+	private void setupConfig() {
+		FileConfiguration c = getConfig();
+		c.addDefault("FasterSprint.Multiplier", "1.7");
+		c.addDefault("HigherJump.Multiplier", "1.7");
+		c.addDefault("HigherJump.EnergyReq", "3");
+		c.addDefault("TicksBetweenRegain", "25");
+		c.addDefault("PlayerGui.LeftSide", "true");
+		c.options().copyDefaults(true);
+		saveConfig();
+	}
+	
+	private void loadConfig() {
+		FileConfiguration c = getConfig();
+		fasterSprintMultiplier = c.getDouble("FasterSprint.Multiplier", 1.7);
+		higherJumpMultiplier = c.getDouble("HigherJump.Multiplier", 1.7);
+		higherJumpEnergyReq = c.getInt("HigherJump.EnergyReq", 3);
+		ticksRegain = c.getLong("TicksBetweenRegain", 25);
+		playerGuiLeft = c.getBoolean("PlayerGui.LeftSide", true);
 	}
 	
 	private String energyBaseUrl = "https://dl.dropbox.com/u/56755498/Server/CybsStuff/EnergyBar/EnergyBar_";
@@ -98,7 +126,7 @@ public class CybsEnergy extends JavaPlugin
 	    			}
 	    		}
 	    	}
-	    , 0L, 25L);
+	    , 0L, ticksRegain);
 	}
 	
 	public void startEnergyLoop2() {
