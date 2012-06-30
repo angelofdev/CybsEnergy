@@ -12,8 +12,8 @@ public class EnergyManager
 	
 	public EnergyManager(CybsEnergy plugin)
   	{
-        p = plugin;
-    }
+        	p = plugin;
+    	}
 	
   	public void setEnergy(Player player, int amount)
   	{
@@ -23,6 +23,6 @@ public class EnergyManager
   	public int getEnergy(Player player)
   	{
 	  	int amount = ((Integer)energy.get(player.getName())).intValue();
-    	return amount;
+    		return amount;
   	}
 }
